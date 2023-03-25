@@ -1,0 +1,33 @@
+
+<%- include('../layouts/adminsigninheader.ejs') %>
+<body class="bg-light">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-4 bg-white m-auto rounded-top wrapper">
+                <h2 class="text-center pt-3">Admin Login</h2>
+
+                <% if(typeof message !=='undefined' ) { %>
+                    <p  class="fs-4 text-success text-center"><%= message %></p>
+                    <% } %>
+                    
+                 <!-- FORM START -->
+                 <form action="/admin" method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text "><i class="fa fa-envelope "></i></span>
+                        <input type="text" name="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text "><i class="fa fa-lock "></i></span>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" value="Register" class="btn btn-success">Login Now</button>
+                        <!-- <p class="text-center">Don't have an account? <a href=>Create New</a></p> -->
+                    </div>
+                 </form>
+                 <!-- FORM END -->
+            </div>
+        </div>
+    </div>
+</body>
+<%-include('../layouts/adminfooter.ejs') %>

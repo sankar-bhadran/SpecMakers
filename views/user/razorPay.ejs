@@ -1,0 +1,64 @@
+<%- include('../layouts/userloggedin.ejs') %>
+<!-- razorpay.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Razorpay Payment Gateway Integration</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </head>
+  <body>
+    <section style="height: 100vh;">
+    <h1>Order Details</h1>
+    <p>Order ID: <%=orderId%></p>
+    <p>Total Price: <%=total%></p>
+
+    <button id="rzp-button">Pay with Razorpay</button>
+
+    <script>
+      var rzp = new Razorpay({
+        key: "<%=key_id %>",
+        amount: "<%=total%>" * 100,
+        currency: "INR",
+        name: "CodeCab",
+        description: "Order #<%=orderId%>",
+        image: "https://example.com/your_logo.jpg",
+        order_id: "<%=order_id%>",
+        handler: function(response) {
+          // Handle payment success
+          console.log(response);
+          //alert("Payment Successful!");
+          window.location.href = "/orderSuccess";
+        },
+        prefill: {
+          name: "<%=user.name%>",
+          email: "<%=user.email%>"
+        },
+        notes: {
+          address: "<%=user.address%>"
+        }
+      });
+
+      rzp.on('payment.failed', function (response){
+        // Handle payment failure
+        console.log(response.error.code);
+        console.log(response.error.description);
+        console.log(response.error.source);
+        console.log(response.error.step);
+        console.log(response.error.reason);
+        console.log(response.error.metadata);
+        //alert("Payment Failed! Please try again.");
+        window.location.href = "/paymentFailure";
+      });
+
+      document.getElementById("rzp-button").onclick = function(e){
+        rzp.open();
+        e.preventDefault();
+      };
+    </script>
+    </section>
+  </body>
+</html>
+
+
+<%- include("../layouts/userFooter") %> 

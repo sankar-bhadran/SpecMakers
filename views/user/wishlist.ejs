@@ -1,0 +1,143 @@
+
+<%- include('../layouts/userloggedin.ejs') %>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<%if(Wishlistproducts.item.length === 0) { %>
+    <div style="display: flex; justify-content: center;">
+    
+        <!-- <img src="/assets/uploads/empty cart.gif" alt="">  -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h1>YOUR WISHLIST IS EMPTY</h1>
+            <div style="display: flex;justify-content: center;">
+             <h5>Add items that you like to your wishlist.Review<br>
+                them anytime and easily move them to the Cart.</h5>
+            </div>
+            <a href="/shop" class="btn btn-info btn-lg btn-block">
+                    CONTINUE SHOPPING  
+            </a>
+          
+
+        </div>
+    </div>
+        </div>
+        <% }else{ %>
+<div class="cart-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-heading mb-10">My wishlist</div>
+                <div class="table-wishlist">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="45%">Product Name</th>
+                                <th width="15%">Price</th>
+                                <!-- <th width="15%">Stock Status</th> -->
+                                <th width="15%"></th>
+                                <th width="10%"></th>
+                            </tr>
+                        </thead>
+                        <% if(id) {%>
+                            <% for(let key of Wishlistproducts.item) {%>
+                        <tbody>
+                            <tr>
+                                <td width="45%">
+                                    <div class="display-flex align-center">
+                                        <div class="img-product">
+                                            <img src="/admin/assets/uploads/<%=key.productId.image[1]%>" alt="" class="mCS_img_loaded">
+                                        </div>
+                                        <div class="name-product">
+                                            <%=key.productId.name %>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="15%" class="price">₹<%=key.productId.price%></td>
+                                <!-- <td width="15%"><span class="in-stock-box">In Stock</span></td> -->
+                                <td width="15%"><a onclick="addtocart('<%=key.productId._id%>')"><button type="button" class="round-black-btn small-btn">Add to Cart</button></a></td>
+                                <td width="10%" class="text-center"><i class="far fa-trash-alt"data-toggle="modal" data-target="#exampleModalCenter1"   onclick="del('<%- key.productId._id %>-del')"></i></td>
+                                <a  id='<%- key.productId._id %>-del' class="remove-from-cart" href="/deletewishlist?id=<%=key.productId._id %>" data-toggle="tooltip" title="" data-original-title="Remove item"></a>
+
+                            </tr>
+                        </tbody>
+                        <% } %>
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Confirm Delete</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure want to remove this product?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="save()">Yes,Remove</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+crossorigin="anonymous"></script>
+<script>
+var val
+function del(value) {
+    val = value
+    console.log(val);
+}
+function save() {
+    document.getElementById(val).click()
+    console.log(`true ${val}`);
+}
+</script>
+
+<% } %>
+<script>
+       function addtocart(id){
+      const value=id
+      console.log(value);
+      $.ajax({
+        url:'/addtocart',
+        type:'POST',
+        data:{cartid:value},
+        success:function(response){
+        console.log(response);
+         Swal.fire({
+        icon: 'success',
+        title: 'Added to Cart',
+        showConfirmButton: false,
+        timer: 800
+        })
+    },
+        error:function(response){
+            //    alert('Error adding Product to cart')
+        }
+      })
+    }
+</script> 
+
+
+
+
+
+
+
+<%-include('../layouts/userFooter.ejs') %>

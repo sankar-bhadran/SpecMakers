@@ -1,0 +1,524 @@
+<%- include('../layouts/userloggedin.ejs') %>
+<!-- <body class="bg-light pb-3"> -->
+
+    <div class="container">
+      <main>
+        <div class="py-5 text-center">
+         
+          <h2>Checkout form</h2>
+     </div>
+     <form class="needs-validation" action="/checkout" method="post">
+
+     <div class="mb-5 border p-4 rounded">
+      <% if(useraddress.length >0){
+        for(let key of useraddress){ %>
+          
+      <div  class="card-body border border rounded mr-2" >
+        <h4 class="card-title">Deliver to: </h4>
+        <hr style="border-top: 1px dashed black;">
+
+        <div class="" role="alert">
+          <div class="">
+            <p><b></b></p>
+            <label>
+            <input type="radio" value="<%=key._id%>" name="addressid" checked >
+            <h6><strong><%=key.firstname %>  <%=key.lastname %></strong>,<br><%=key.address %>,<br><%=key.city%>,<%=key.state%>,<br><%=key.country%>, <br>Pin:<%=key.zip %>,<br>Phone:<%=key.mobile %></h6>
+            <a href="/editaddresscheckout?id=<%=key._id%>"><input type="button" value="Edit" class="btn btn-info btn-sm"></a> 
+             <a href="/deletaddresscheckout?id=<%=key._id%>"><input type="button" value="Delete" class="btn btn-dark btn-sm"></a>
+            </label> 
+            <!-- <a href=""><input type="button" value="Selected" class="btn btn-link btn-sm"></a> -->
+            <!-- <a href="/checkout?addressid=<%=key._id%>" onclick="select('<%=key._id%>')"><input type="button" value="Select" class="btn btn-success btn-sm" ></a> -->
+          </div>
+         
+        </div>
+      
+      </div>
+  
+      <%}}else{%>
+
+        <div class="col-lg-6">
+          <a>
+            <div class="card card-dashboard">
+              <div class="card-body">
+                <h3 class="card-title">Shipping
+                  Address</h3>
+
+                <p>You have not set up this
+                  type of address yet.<br>
+              </div>
+            </div>
+          </a>
+        </div>
+        <%}%>
+
+    </div>
+
+        <div class="row g-5">
+          <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-primary">Your cart</span>
+              <span class="badge bg-primary rounded-pill"></span>
+            </h4>
+            <div class="table-responsive">
+              <table class="nk-table
+              nk-table-sm">
+              <% if(id) { %>
+                <thead class="thead-default">
+                  <tr>
+                    <th class="nk-product-cart-title">Product</th>
+                    <th class="nk-product-cart-total">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <% for(let key of cartProducts.item){ %>
+                  <tr>
+                    <td class="nk-product-cart-title">
+                    <%=key.productId.name %> &times; <%=key.qty %>
+                    </td>
+                    <td class="nk-product-cart-total">
+                      ₹ <%=key.productId.price*key.qty %>
+                    </td>
+                  </tr>
+                 <% } %>
+                 
+      
+                  <tr class="nk-store-cart-totals-subtotal">
+                    <td>Subtotal</td>
+                    <td>₹ <%=cartProducts.totalPrice%></td>
+                    <input type="hidden" id="subtotal" value="<%=cartProducts.totalPrice%>">
+                  </tr>
+
+                  <tr class="nk-store-cart-totals-shipping">
+                    <td>Shipping</td>
+                    <td>Free
+                      Shipping</td>
+                  </tr>
+                  <tr class="nk-store-cart-totals-shipping" id="dis">
+                   
+                  </tr>
+                  <tr id="subtot">
+
+                  </tr>
+
+                  <tr class="nk-store-cart-totals-total" id="gtotal">
+                    <td><strong>Total</strong></td>
+                    <td>₹ <strong><%=cartProducts.totalPrice%></strong>
+                      </td>
+                      <input type="hidden" name="totalprice" value="<%=cartProducts.totalPrice%>">
+                  </tr>
+                  
+                  <% } %>
+                </tbody>
+                                   
+
+              </table>
+            </div>
+          
+            
+              <div class="input-group mb-2">
+                 <input type="text" class="" name="coupon" id="couponid" placeholder="Coupon code" value="">
+                 <button type="button" class="btn btn-primary" onclick="apply()">Redeem</button> 
+              </div>
+              
+              <a class="btn btn-primary " type="button" data-toggle="modal"href="#exampleModalScrollable1">Show Coupons</a>
+
+              <p id="message"></p>
+                
+
+              <button class="w-100 my-3 mb-1 btn btn-primary btn-lg"  type="submit" onclick="pre()"> Place Order</button>
+
+            
+          </div>
+          <div class="col-md-7 col-lg-8">
+            <!-- <h4 class="mb-3">Billing address</h4> -->
+            <!-- <% if(selectedaddress!=null){ %> -->
+                 <!-- <div class="row g-3">
+                <div class="col-sm-6">
+                    <label>Name *</label>
+                    <input type="text" class="form-control" name="firstname" placeholder="First name"
+                     value="<%=selectedaddress.firstname %>"required>
+                </div> -->
+    
+                <!-- <div class="col-sm-6">
+                    <label>Last Name *</label>
+                    <input type="text" class="form-control" name="lastname" placeholder="Last name"
+                     value="<%=selectedaddress.lastname %>"required>
+                </div> -->
+    
+                <!-- <div class="col-12">
+                    <label>Country *</label>
+                    <input type="text" class="form-control" name="country" placeholder="Country"
+                     value="<%=selectedaddress.country %>" required>
+                </div> -->
+    
+                <!-- <div class="col-12">
+                    <label>address *</label>
+                     <input type="text" class="form-control" placeholder="Address" name="address"
+                      value="<%=selectedaddress.address %>" required>
+                </div> -->
+    
+              
+                    <!-- <div class="col-12">
+                    <label>Town / City *</label>
+                    <input type="text" class="form-control" name="city" placeholder="City"
+                    value="<%=selectedaddress.city %>" required>
+                </div> -->
+            
+                <!-- <div class="col-12">
+                    <label>State / County *</label>
+                    <input type="text" class="form-control" name="state" placeholder="State"
+                     value="<%=selectedaddress.state %>"   required>
+                
+                </div>
+
+                   <div class="col-12">
+                    <label>Postcode / ZIP *</label>
+                    <input type="text" class="form-control" name="zip"
+                    placeholder="Postcode/ZIP" value="<%=selectedaddress.zip %>" required>
+                    <label>Phone *</label>
+                    <input type="tel" class="form-control" name="mno" placeholder="Phone"
+                      value="<%=selectedaddress.mobile%>" required>
+              
+                       
+              </div> -->
+              <!-- <% }  %> -->
+                    <br>
+              <hr class="my-4">
+              <div class="my-3">
+              <button type="button"  class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+                Add Address
+              </button>
+               
+              <div class="form-check">
+                <h4 class="my-2">Payment</h4>
+                <div class="my-3">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="payment"
+                      id="exampleRadios1"
+                      value="Cash-on-Delivery"
+                      checked
+                      />
+                    <label
+                      class="form-check-label"
+                      for="exampleRadios1">
+                      Cash
+                      on
+                      Delivery
+                    </label>
+                  </div>
+                  <div class="form-check">
+                       <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payment"
+                    id="exampleRadios2"
+                    value="RazorPay"
+                    />
+                  <label
+                    class="form-check-label"
+                    for="exampleRadios2">
+                    RazorPay
+                  </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payment"
+                    id="exampleRadios3"
+                    value="PayPal"
+                    />
+                  <label
+                    class="form-check-label"
+                    for="exampleRadios3">
+                    PayPal
+                  </label>
+                  </div>
+                </div>
+              </div> 
+              </div> 
+             
+             
+       
+            
+    
+               <!-- <div class="row gy-3">
+                <div class="col-md-6">
+                  <label for="cc-name" class="form-label">Name on card</label>
+                  <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                  <small class="text-muted">Full name as displayed on card</small>
+                  <div class="invalid-feedback">
+                    Name on card is required
+                  </div>
+                </div>
+    
+                <div class="col-md-6">
+                  <label for="cc-number" class="form-label">Credit card number</label>
+                  <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                  <div class="invalid-feedback">
+                    Credit card number is required
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <label for="cc-expiration" class="form-label">Expiration</label>
+                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                  <div class="invalid-feedback">
+                    Expiration date required
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <label for="cc-cvv" class="form-label">CVV</label>
+                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                  <div class="invalid-feedback">
+                    Security code required
+                  </div>
+                </div>
+              </div> -->
+    
+              <hr class="my-4">
+    
+              <% for(let key of coupons){%>
+                <input type="hidden" name="coupons" >
+                <%}%>
+
+                
+            </form>
+          </div>
+          
+        </div>
+      </main>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Adress</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/checkoutaddress" class="colorlib-form">
+              <div class="row">
+                
+                <label>Name *</label>
+                <input type="text" class="form-control" name="firstname" placeholder="First name"
+                  required>
+          
+                <label>Last Name *</label>
+                <input type="text" class="form-control" name="lastname" placeholder="Last name"
+                  required>
+          
+          
+          
+                <label>Country *</label>
+                <input type="text" class="form-control" name="country" placeholder="Country"
+                  required>
+          
+                <label>address *</label>
+                <input type="text" class="form-control" placeholder="Address" name="address"
+                  required>
+          
+          
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label>Town / City *</label>
+                    <input type="text" class="form-control" name="city" placeholder="City"
+                      required>
+                  </div>
+          
+                  <div class="col-sm-6">
+                    <label>State / County *</label>
+                    <input type="text" class="form-control" name="state" placeholder="State"
+                      required>
+                  </div>
+                </div>
+          
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label>Postcode / ZIP *</label>
+                    <input type="text" class="form-control" name="zip"
+                      placeholder="Postcode/ZIP" required>
+                  </div>
+          
+                  <div class="col-sm-6">
+                    <label>Phone *</label>
+                    <input type="tel" class="form-control" name="mno" placeholder="Phone"
+                      required>
+                  </div>
+                </div> 
+              
+                <br>
+                <!-- <button type="submit" class="btn btn-success rounded-2 shadow  ">
+                  Save Address
+                </button> -->
+            
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+           </div>
+          </form>
+        </div>
+      </div>
+    </div>  
+
+
+    
+
+      <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitle">Add coupons</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- <input type="hidden" id="total" value="<%=coupons.length %>"> -->
+          <% for(i=0;i<coupons.length;i++){ %>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <h4  style="color: crimson;"><strong id="<%=coupons[i]._id%>"><%= coupons[i].Couponname %></strong></h4>
+                <button onclick="copyText('<%=coupons[i]._id%>')">Copy</button>
+                <h6><%= coupons[i].description %></h6>
+                <h6>Min cart value-<%= coupons[i].min_value%> </h6>
+                <h6 id="<%=i%>exp"></h6>
+                <input type="hidden" id="date<%-i%>" value="<%=coupons[i].expiry_date %>">
+
+                <!-- <label for="c_fname" class="text-black">Coupon Name <span class="text-danger">*</span></label> -->
+                <!-- <input type="text" class="form-control"  name="couponname"> -->
+              </div>
+
+              
+
+            
+          </div>
+          <hr>
+          <% } %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+          </div>
+        </div>
+      </div> 
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--     
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">© 2017–2022 Company Name</p>
+            <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer>
+        </div>
+        -->
+    
+        <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+          <script src="checkout.js"></script>
+      
+    
+    <!-- </body> -->
+   
+
+
+  <script>
+        function sel(id){
+          console.log(id);
+          document.getElementById(id)
+        }
+  </script>
+
+    <script>
+      function copyText(id) {
+        console.log(id);
+      coupon = document.getElementById(id).innerHTML
+      console.log(coupon);
+        /* Copy text into clipboard */
+        navigator.clipboard.writeText(coupon);
+    }
+
+    function apply(){
+    const coupon =document.getElementById('couponid').value
+    console.log(coupon);
+    const subTotal=parseInt(document.getElementById('subtotal').value)
+    console.log(subTotal);
+    console.log(typeof(subTotal));
+    $.ajax({
+      url:"/applycoupon",
+      type:'POST',
+      data:{couponname:coupon},
+      success:function(data){
+        if(data!=data.coupondata){
+          document.getElementById('message').innerHTML= "Coupon expired!!!"
+        }
+      if(subTotal>=data.coupondata.min_value){
+        discount=(data.coupondata.discount*subTotal)/100
+        if(discount>data.coupondata.max_discount){
+          discount=data.coupondata.max_discount
+        }
+        total=subTotal-discount
+        // req.session.couponTotal = total;
+        if(total){
+          document.getElementById('message').innerHTML="Coupon applied successfully"
+        }
+        console.log(total);
+        document.getElementById('dis').innerHTML=`
+        <td>Coupon Discount</td>
+        <td>${data.coupondata.discount}%</td>`
+        document.getElementById('subtot').innerHTML=`
+        <td>Discount amount</td>
+        <td>₹ ${discount}</td>
+        <input type="hidden" id="subtotal" value="${discount}">`
+        document.getElementById('gtotal').innerHTML=`
+        <td><strong>Total</strong></td>
+        <td>₹ <strong>${total}</strong></td>
+        <input type="hidden" name="totalprice" value="${total}">`
+      }else{
+        document.getElementById('message').innerHTML="Coupon not applicable!!!"
+      }
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+
+    })
+
+    }
+
+    </script>
+
+    <%- include("../layouts/userFooter") %> 
+
+
+    

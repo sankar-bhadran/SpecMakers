@@ -1,0 +1,139 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css'>
+
+<!-- <%-include("../layouts/userloggedin.ejs") %>
+
+<section class="mt-12 text-gray-800 tracking-widest w-full max-w-6xl mx-auto flex min-h-screen">
+	<hr>
+	<nav class="w-56 flex-none text-gray-800 tracking-widest  border-r pr-2">
+		<div class="h-full flex flex-col gap-2 p-2">
+			<div class="py-2 flex flex-col gap-1">
+				<a href="/dashboard" class="flex items-center text-xs rounded tracking-widest bg-yellow-200 px-4 py-2 cursor-pointer hover:bg-yellow-100 active ease-in-out">
+					<i class="fas fa-bi bi-person-circle text-sm w-8"></i>
+					<p class="font-bold" style="font-size: larger; text-decoration:solid black">Profile</p>
+				</a>
+				<a href="/orderdetails" class="flex items-center text-xs rounded tracking-widest px-4 py-2 cursor-pointer hover:bg-yellow-100 transition duration-200 ease-in-out" >
+					<i class="far fa-calendar-check text-sm w-8"></i>
+					<p class="font-bold" style="font-size: larger;">Orders</p>
+				</a>
+				<a class="flex items-center text-xs rounded tracking-widest px-4 py-2 cursor-pointer hover:bg-yellow-100 transition duration-200 ease-in-out">
+					<i class="far fa-images text-sm w-8"></i>
+					<p class="font-bold" style="font-size: larger;">Addresses</p>
+				</a>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="row pl-5 ">
+		<div class="card-03">
+		   <div class="cloumn">
+			<div class="col ">
+			<% if(useraddress.length  >0) { 
+				for(let key of useraddress){ %>
+			
+				<div class="" role="alert">
+				  <div class="text-black">
+					<p><b></b></p>
+					<p><%=key.firstname %> <%=key.lastname%>,<br><%=key.address%> <br><%=key.city%>,<%=key.state%> <br><%=key.country%> <br>
+						pin:<%=key.zip %> <br>phone:<%=key.mobile%> 
+					</p>
+					 
+					<a href=""><input type="button" value="Edit" class="btn btn-light btn-sm"></a>
+					<a href=""><input type="button" value="Delete" class="btn btn-dark btn-sm"></a>			
+					<!-- <a href=""><input type="button" value="Selected" class="btn btn-link btn-sm"></a> -->
+					<!-- <a href=""><input type="button" value="Select" class="btn btn-link btn-sm"></a> -->
+					
+		
+				  </div>
+				 
+				</div>
+				<% } %>
+			<% } %>
+			
+			</div>
+		</div>	
+			
+		</div> 
+
+    
+
+<hr class="border-dark">
+<div class="size-210 bor10 p-lr-70 p-t-20 p-b-70 p-lr-15-lg w-full-md pt-1 pb-5">
+
+		<form action="" method="">
+
+			<h4 class="mtext-105 cl2 txt-center p-b-30">
+				ADD ADDRESS
+			</h4>
+
+			<label>Name *</label>
+			<input type="text" class="form-control" name="firstname" placeholder="First name"
+				required>
+
+			<label>Last Name *</label>
+			<input type="text" class="form-control" name="lastname" placeholder="Last name"
+				required>
+
+
+
+			<label>Country *</label>
+			<input type="text" class="form-control" name="country" placeholder="Country"
+				required>
+
+			<label>address *</label>
+			<input type="text" class="form-control" placeholder="Address" name="address"
+				required>
+
+
+			<div class="row">
+				<div class="col-sm-6">
+					<label>Town / City *</label>
+					<input type="text" class="form-control" name="city" placeholder="City"
+						required>
+				</div>
+
+				<div class="col-sm-6">
+					<label>State / County *</label>
+					<input type="text" class="form-control" name="state" placeholder="State"
+						required>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<label>Postcode / ZIP *</label>
+					<input type="text" class="form-control" name="zip"
+						placeholder="Postcode/ZIP" required>
+				</div>
+
+				<div class="col-sm-6">
+					<label>Phone *</label>
+					<input type="tel" class="form-control" name="mno" placeholder="Phone"
+						required>
+				</div>
+			</div> 
+		
+			<br>
+			<button type="submit" class="btn btn-success rounded-2 shadow  ">
+				Save Address
+			</button>
+	
+		</form>
+  </div>
+
+</div>
+
+
+ 
+	
+
+
+
+
+
+</section> -->
+
+
+
+
+
+	  <%- include("../layouts/userFooter") %>

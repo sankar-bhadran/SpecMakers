@@ -1,0 +1,15 @@
+* {
+	font-family: 'Poppins', sans-serif;
+    font-size: larger;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.font-sans {
+	font-family: 'Poppins', sans-serif;
+}
+
+.font-open-sans {
+	font-family: 'Source Sans Pro', sans-serif;
+}

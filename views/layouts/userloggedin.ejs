@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>SpecMakers</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Goggles a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link href="/assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/assets/css/login_overlay.css" rel='stylesheet' type='text/css' />
+	<link href="/assets/css/style6.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="/assets/css/shop.css" type="text/css" />
+	<link rel="stylesheet" href="/assets/css/owl.carousel.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/owl.theme.css" type="text/css" media="all">
+	<link href="/assets/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="/assets/css/fontawesome-all.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+	    rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="/public/css/otp.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		<link rel="stylesheet" href="image zoom/magiczoom.css">
+		<link rel="stylesheet" href="/css/address.css">
+		<link rel="stylesheet" href="/css/whislist.css">
+		<link rel="stylesheet" href="/css/wishlistmain.css">
+		<link rel="stylesheet" href="/css/cart.css">
+		<script src="image zoom/magiczoom.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+		 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/> 
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css'> -->
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href='/public/css/user.css'>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+	<div class="banner-top container-fluid" id="home">
+		<!-- header -->
+		<header>
+			<div class="row">
+				<div class="col-md-3 top-info text-left mt-lg-4">
+					<h6>Need Help</h6>
+					<ul>
+						<li>
+							<i class="fas fa-phone"></i> Call</li>
+						<li class="number-phone mt-3">0471-23146</li>
+					</ul>
+				</div>
+				<div class="col-md-6 logo-w3layouts text-center">
+					<h1 class="logo-w3layouts">
+						<a class="navbar-brand" href="index.html">
+							SpecMakers </a>
+					</h1>
+				</div>
+
+			
+
+				  <div class="col-md-3 top-info-cart text-right mt-lg-4 " >
+					<ul class="cart-inner-info " style=" display: flex; justify-content: space-evenly;">
+						<li class="button-log ">
+							<% if(user) { %> 
+								<a href="/logout">
+									<button type="submit" class="btn btn-primary submit btn-sm"	>Log out</button>
+								</a>
+								<% }else { %>
+									<a href="/login">
+										<button type="submit" class="btn btn-primary submit btn-sm">Log In</button>
+	
+									</a>
+								<% } %>
+						</li>	
+						
+						<li>
+                         <a href="dashboard" class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-account" class="dropdown mt-3">
+						 <i  class="bi bi-person" style="color:#454546;font-size: 1.7rem;"></i>
+						 </a> 
+						</li>
+
+						 <li style="font-size: 20px;">
+							<a href="wishlist" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+							<i class="bi bi-heart" style="color: orangered; font-size: 1.7rem;"></i>
+						 </li>
+                        
+
+
+								
+						<li class="galssescart galssescart2 cart cart box_1">
+							<a href="/cart">
+									<i class="fas fa-cart-arrow-down" style="color:#454546;font-size: 1.7rem;"></i>
+							</a>		
+						</li>
+					</ul>
+					
+				</div> 
+			</div>
+			<div class="search">
+				<div class="mobile-nav-button">
+					<button id="trigger-overlay" type="button">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+				<!-- open/close -->
+				<div class="overlay overlay-door">
+					<button type="button" class="overlay-close">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</button>
+					<form action="#" method="post" class="d-flex">
+						<input class="form-control" type="search" placeholder="Search here..." required="">
+						<button type="submit" class="btn btn-primary submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</form>
+
+				</div>
+				<!-- open/close -->
+			</div>
+			<label class="top-log mx-auto"></label>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
+
+				<button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				    aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						
+					</span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav nav-mega mx-auto">
+						<li class="nav-item ">
+							<a class="nav-link ml-lg-0" href="/home">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="about.html">About</a>
+						</li> -->
+						<!-- <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="" role="button" data-toggle="dropdown" aria-haspopup="true"
+							    aria-expanded="false">
+								Features
+							</a>
+							<ul class="dropdown-menu mega-menu ">
+								<li>
+									<div class="row">
+										<div class="col-md-4 media-list span4 text-left">
+											<h5 class="tittle-w3layouts-sub"> Tittle goes here </h5>
+											<ul>
+												<li class="media-mini mt-3">
+													<a href="shop.html">Designer Glasses</a>
+												</li>
+												<li class="">
+													<a href="shop.html"> Ray-Ban</a>
+												</li>
+												<li>
+													<a href="shop.html">Prescription Glasses</a>
+												</li>
+												<li class="mt-3">
+													<h5>View more pages</h5>
+												</li>
+												<li class="mt-2">
+													<a href="about.html">About</a>
+												</li>
+												<li>
+													<a href="customer.html">Customers</a>
+												</li>
+											</ul>
+										</div>
+										<div class="col-md-4 media-list span4 text-left">
+											<h5 class="tittle-w3layouts-sub"> Tittle goes here </h5>
+											<div class="media-mini mt-3">
+												<a href="shop.html">
+													<img src="/assets/images/g2.jpg" class="img-fluid" alt="">
+												</a>
+											</div>
+										</div>
+										<div class="col-md-4 media-list span4 text-left">
+											<h5 class="tittle-w3layouts-sub">Tittle goes here </h5>
+											<div class="media-mini mt-3">
+												<a href="shop.html">
+													<img src="/assets/images/g3.jpg" class="img-fluid" alt="">
+												</a>
+											</div>
+
+										</div>
+									</div>
+									<hr>
+								</li>
+							</ul>
+						</li> -->
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="/shop" id="" role="button" data-toggle="" aria-haspopup="true"
+							    aria-expanded="false">
+								Shop
+							</a>
+							<!-- <ul class="dropdown-menu mega-menu ">
+								<li>
+									<div class="row">
+										<div class="col-md-4 media-list span4 text-left">
+											<h5 class="tittle-w3layouts-sub"> Tittle goes here </h5>
+											<ul>
+												<li class="media-mini mt-3">
+													<a href="shop.html">Designer Glasses</a>
+												</li>
+												<li class="">
+													<a href="shop.html"> Ray-Ban</a>
+												</li>
+												<li>
+													<a href="shop.html">Prescription Glasses</a>
+												</li>
+												<li>
+													<a href="shop.html">Rx Sunglasses</a>
+												</li>
+												<li>
+													<a href="shop.html">Contact Lenses</a>
+												</li>
+												<li>
+													<a href="shop.html">Multifocal Glasses</a>
+												</li>
+												<li>
+													<a href="shop.html">Kids Glasses</a>
+												</li>
+												<li>
+													<a href="shop.html">Lightweight Glasses</a>
+												</li>
+												<li>
+													<a href="shop.html">Sports Glasses</a>
+												</li>
+											</ul>
+										</div>
+										<div class="col-md-4 media-list span4 text-left">
+											<h5 class="tittle-w3layouts-sub"> Tittle goes here </h5>
+											<ul>
+												<li class="media-mini mt-3">
+
+													<a href="shop.html">Brooks Brothers</a>
+												</li>
+												<li>
+													<a href="shop.html">Persol</a>
+												</li>
+												<li>
+													<a href="shop.html">Polo Ralph Lauren</a>
+												</li>
+												<li>
+													<a href="shop.html">Prada</a>
+												</li>
+												<li>
+													<a href="shop.html">Ray-Ban Jr</a>
+												</li>
+												<li>
+													<a href="shop.html">Sferoflex</a>
+												</li>
+											</ul>
+											<ul class="sub-in text-left">
+
+												<li>
+													<a href="shop.html">Polo Ralph Lauren</a>
+												</li>
+												<li>
+													<a href="shop.html">Prada</a>
+												</li>
+												<li>
+													<a href="shop.html">Ray-Ban Jr</a>
+												</li>
+											</ul>
+
+										</div>
+										<div class="col-md-4 media-list span4 text-left">
+
+											<h5 class="tittle-w3layouts-sub-nav">Tittle goes here </h5>
+											<div class="media-mini mt-3">
+												<a href="shop.html">
+													<img src="images/g1.jpg" class="img-fluid" alt="">
+												</a>
+											</div>
+
+										</div>
+									</div>
+									<hr>
+								</li>
+							</ul> -->
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">Contact</a>
+						</li>
+					</ul>
+
+				</div>
+			</nav>
+
+		</header>
+		<!-- //header -->

@@ -1,0 +1,337 @@
+<%- include('../layouts/adminheader.ejs') %>
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+      <div class="sidebar-wrapper">
+          <div class="logo">
+                  <img src="/assets/images/icons/logo-01.png" alt="">
+                  <strong style="font-size: 200%;">SpecsMakers</strong>
+                </div>
+          <ul class="nav">
+              <li>
+                  <a href="/admin/">
+                      <i class="ti-panel"></i>
+                      <p>Dashboard</p>
+                  </a>
+              </li>
+              
+              <li>
+                  <a href="adminUser">
+                      <i class="ti-view-list-alt"></i>
+                      <p>Users List</p>
+                  </a>
+              </li>
+              <li  class="" >
+                  <a href="adminProduct">
+                      <i class="ti-view-list-alt"></i>
+                      <p>Product</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="adminOrder">
+                      <i class="ti-pencil-alt2"></i>
+                      <p>Order</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="admin-category">
+                      <i class="ti-view-list-alt"></i>
+                      <p>Category</p>
+                  </a>
+              </li>
+              <li>
+                <a href="/admin/loadBanners">
+                    <i class="ti-map"></i>
+                    <p>Banners</p>
+                </a>
+            </li>
+              <li class="active">
+                  <a href="admin-offer">
+                      <i class="ti-bell"></i>
+                      <p>Offer</p>
+                  </a>
+              </li>
+              <li>
+                <a href="/admin/salesReport">
+                    <i class="ti-download"></i>
+                    <p>Product List</p>
+                </a>
+              </li>
+              <li>
+                <a href="/admin/adminlogout"
+                  ><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a
+                >
+              </li>
+              
+          </ul>
+      </div>
+      </div>
+    
+      <div class="main-panel">
+      <nav class="navbar navbar-default" style="margin-bottom: 5rem;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
+                <a class="navbar-brand" href="#">Download SalesReport</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="ti-panel"></i>
+                            <p>Stats</p>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-bell"></i>
+                                <p class="notification">5</p>
+                                <p>Notifications</p>
+                                <b class="caret"></b>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Notification 1</a></li>
+                            <li><a href="#">Notification 2</a></li>
+                            <li><a href="#">Notification 3</a></li>
+                            <li><a href="#">Notification 4</a></li>
+                            <li><a href="#">Another notification</a></li>
+                          </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ti-settings"></i>
+                            <p>Settings</p>
+                        </a>
+                    </li>
+                </ul>
+    
+            </div>
+        </div>
+    </nav>
+    
+    
+    <!-- <form action="/admin/uploadcoupon" method="post" class="my-auto" style="height: 80vh; display: flex; justify-content: center;"> -->
+        <div class="container h-100 justify-content-center align-items-center" >
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card bg-transparent" style="border-radius: 25px;">
+                        <div class="card-body p-md-2">
+                            <div class="row justify-content-center" style=" display: flex; justify-content: center;">
+                                <div class="col-md-2 col-lg-6 col-xl-5 order-2 order-lg-1 width-50" style="padding: 2rem;">
+                                   
+    
+                                    <form class="mx-1 mx-md-2" >
+          
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                          
+                                          <div class="form-outline flex-fill m-b-5">
+                                            <label class="form-label" for="form3Example1c">Start Date</label>
+                                            <input type="date" id="startdate" class="form-control" name="couponName" required style="background-color:aliceblue;" onchange="date()"/>
+                                          </div>
+                                        </div>
+
+
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                          
+                                            <div class="form-outline flex-fill m-b-5">
+                                              <label class="form-label" for="form3Example1c">End Date</label>
+                                              <input type="date" id="enddate" class="form-control" name="couponName" required style="background-color:aliceblue;" onchange="date()"/>
+                                            </div>
+                                          </div>
+
+                                    
+                                        <!-- <div class="d-flex flex-row align-items-center mb-2"> -->
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <div class="form-outline flex-fill mb-0">
+                                              <label class="form-label" for="form3Example4c" style="margin-top: 20px;">Download Report</label>
+                                              <div class="dropdown" >
+                                                <!-- <input type="text" id="form3Example4c" class="form-control" name="discount" required style="background-color:aliceblue;"/> -->
+                                              </div>
+                                            </div>
+                                          </div> 
+
+                                          <div style="margin-top: 10px;">
+                                           <button class="btn btn danger" id="downloadPdfBtn">DOWNLOAD PDF</button>
+                                           <button class="btn btn success" id="downloadExcelBtn">DOWNLOAD EXCEL</button>
+                                          </div>
+                                      </form>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            
+                        </div>
+                        
+                        <div class="content table-responsive table-full-width">
+                            <table id="ordersTable" class="table table-striped">
+                                <thead>
+                                    <th>SI NO</th>
+                                    <th>Order Id</th>
+                                    <th>User Name</th>
+                                    <th>Date</th>
+                                    <th>Payment Status</th>
+                                    <th>Bill Amount</th>
+                                    <th>status</th>
+                                </thead>
+                                <tbody id="tbody">
+                                  <% if(orders.length>0){%>
+                                    <% for(let i=1;i<=orders.length;i++){%>
+
+                                          
+                                    <tr>
+                                        <th><%=i %></th>
+
+                                        <td>
+                                            <%=orders[i-1]._id%>
+                                        </td>
+                                      
+                                        <td>
+                                         <%=orders[i-1].userId.name%>    
+                                        </td>
+
+                                        <td>
+                                         <%=orders[i-1].OrderedAt.toDateString()%>
+                                        </td>
+
+                                        <td>
+                                        <%=orders[i-1].payment%>
+                                        </td>
+
+                                        <td>
+                                            <%=orders[i-1].products.totalPrice %>
+                                        </td> 
+
+                                        <td>
+                                           <%=orders[i-1].status%>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                        
+                                        </td>
+                                    </tr>
+                
+                                  
+                                    
+                                        <% } %>
+                                        <% } %>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+     <!-- </form> -->
+    </div>
+    </div>
+
+
+<!--     
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+             
+        </div>
+    </div> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+    
+    
+    
+    <!-- SheetJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Download as PDF
+      // console.log(jsPDF);
+    document.getElementById('downloadPdfBtn').addEventListener('click', function() {
+      // Get the table element
+    
+    
+      var doc = new jsPDF()
+        doc.autoTable({ html: '#ordersTable' })
+        doc.save('sales.pdf')
+    });
+    
+    // Download as Excel
+    document.getElementById('downloadExcelBtn').addEventListener('click', function() {
+      // Get the table element
+      var table = document.getElementById('ordersTable');
+    
+      // Convert the table data to a worksheet object
+      var worksheet = XLSX.utils.table_to_sheet(table);
+    
+      // Create a new workbook and add the worksheet
+      var workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sales');
+    
+      // Save the Excel file
+      XLSX.writeFile(workbook, 'sales.xlsx');
+    });
+    
+    </script>
+
+    <script>
+        function date(){
+        const startdate=document.getElementById('startdate').value
+        console.log(startdate);
+        const enddate=document.getElementById('enddate').value
+        console.log(enddate);
+        $.ajax({
+            url:'/admin/downloadreport',
+            type:'POST',
+            data:{sdate:startdate,edate:enddate},
+            success:function(data){
+                console.log(data);
+                let tablebody='';
+
+                if(data.ordersdata.length>0){
+                    console.log(1);
+                    for(i=0;i<data.ordersdata.length;i++){
+                       tablebody +=`<tr>
+                        <th>${i+1}</th>
+                         <td>${data.ordersdata[i]._id}</td>
+                        <td>${data.ordersdata[i].userId.name}</td>
+                        <td>${new Date(data.ordersdata[i].OrderedAt).toDateString()}</td>
+                        <td>${data.ordersdata[i].payment}</td>
+                        <td>${data.ordersdata[i].products.totalPrice}</td>
+                        <td>${data.ordersdata[i].status}</td>
+                        </tr>` 
+
+                    }
+                }else{  
+                    // tablebody=`<tr><td colspan="5">Products Not Found</td></tr>`
+                  
+                }
+                document.getElementById("tbody").innerHTML= tablebody;
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+        })
+        }
+    </script>
+
+
+<%-include('../layouts/adminfooter.ejs') %>

@@ -1,0 +1,142 @@
+<%-include('../layouts/productdetailsheader.ejs') %>
+<%- include('../layouts/userloggedin.ejs') %>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<body>
+    <body>
+        <section class=" container sproduct my-5 pt-5">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-12 pb-1 rounded" style=" border: 1px solid black; " >
+                    <a href="/admin/assets/uploads/<%=products.image[0]%>" class="MagicZoom">
+                    <img class="img-fluid w-100 " src="/admin/assets/uploads/<%=products.image[0]%>" alt="" id="MainImg" width="auto" height="auto" >
+                </a>
+                <hr style="border:solid 1px black;
+                width: 96%;
+                color: #FFFF00;
+                height: 1px;
+                ">                    
+                <div class="small-img-group">
+                        <div class="small-img-col me-1 ">
+                         
+                            <img src="/admin/assets/uploads/<%=products.image[0] %>" width="120px"class="small-img" alt="" height="120px" >
+                        
+                        </div> 
+                        <div class="small-img-col">
+                            <img src="/admin/assets/uploads/<%=products.image[1] %>" width="120px"class="small-img" alt="" height="120px">
+                        </div>
+                        <div class="small-img-col ms-1">
+                            <img src="/admin/assets/uploads/<%=products.image[2] %>" width="120px"class="small-img" alt="" height="120px">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 col-12 ">
+                    <h6>Home/View Details</h6>
+                    <h3 class="py-4"><%=products.name %></h3>
+                    <h2 class="pb-3">₹ <%=products.price %></h2>
+                    <!-- <select class="my-3 rounded">
+                        <option>Select Frame</option>
+                        <option>Round</option>
+                        <option>Square</option>
+                        <option>Wayfarer</option>
+                        <option>Rectangle</option>
+                    </select> -->
+                    <!-- <input type="number" value="1"> -->
+                    <% if(user){%>
+                    <a onclick="addtocart('<%=products._id%>')" >                   
+                         <button class="buy-btn btn-sm rounded text text-white">Add To Cart</button>
+                    </a>
+                    <%} else {%>
+                        <a onclick="login('message')" >                   
+                            <button class="buy-btn btn-sm rounded text text-white">Add To Cart</button>
+                       </a>
+                       <%}%> 
+                     <h4 class="mt-5 mb-5">Product Details</h4>
+                     <span><%= products.description %></span>
+    
+    
+                </div>
+            </div>
+        </section>
+        <section id="featured" class="my-5 pb-5" >
+            <div class="container text-center mt-5 py-5" >
+                <h1>Related Products</h1>
+                <hr style="border: 1px solid black;">
+            </div>
+            <div class="row mx-auto container-fluid">
+                <% if(productone){%>
+                    <% for(let i=0;i<4 ;i++) {%>
+                <div class="product text-center-fluid col-lg-3 col-md-4 col-12 rounded">
+                    <div class="card product-item border-0 mb-4" style="background-color:#EDf1ff;">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <% if(productone[i].image[0]) { %>
+                            <img class="img-fluid w-100" src="/admin/assets/uploads/<%= productone[i].image[1] %>" alt="">
+                            <% } %>
+                        </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3"><%=productone[i].name %></h6>
+                                <div class="">
+                                    <h6 ><%=productone[i].price%></h6><h6 class="text-muted ml-2"></h6>
+                                    <a href="/addtowishlist?id=<%=productone[i]._id %>">
+                                        <button class="buy-btn btn text text-white"><i class="fa  fa-heart"></i></button> 
+                                    </a>                               
+                                 </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="/view-product?id=<%= productone[i].id %>" class="btn btn-sm  p-0" style="color:#ff4e00"><i class="fas fa-eye text-dark mr-1"></i>View Detail</a>
+                                <a href="" class="btn btn-sm  p-0" style="color:#ff4e00"><i class="fas fa-shopping-cart text-dark mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <%}} else{%>
+                        <div class="flex-c-m flex-w w-full p-t-45">
+                           <span>NO product</span>
+                        </div>
+                       
+                       <% } %>
+            </div>
+        
+        
+        </section>
+ 
+        
+</body>
+<script>
+    function addtocart(id){
+      const value=id
+      console.log(value);
+      $.ajax({
+        url:'/addtocart',
+        type:'POST',
+        data:{cartid:value},
+        success:function(response){
+         console.log(response);
+         Swal.fire({
+        icon: 'success',
+        title: 'Added to Cart',
+        showConfirmButton: false,
+        timer: 800
+        })
+        },
+        error:function(response){
+            //    alert('Error adding Product to cart')
+        }
+      })
+    }
+
+  function login (id){
+    Swal.fire({
+  icon: 'error',
+  title: 'PLEASE LOGIN!',
+  showConfirmButton: false,
+  timer: 900
+}) 
+  }
+</script>
+<%-include('../layouts/userFooter.ejs') %>
+<%-include("../layouts/productsdetailfooter.ejs") %>
+
+
+          
+ 
+
+

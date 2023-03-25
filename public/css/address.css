@@ -1,0 +1,42 @@
+body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+
+.container{
+    margin:20px
+}
+
+.row{
+    width:100%;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.card-03{
+    position:realtive;
+    flex:1;
+    max-width:940px;
+    /* height: 300px; */
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.col{
+    display: flex;
+    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(1fr*4);
+}
+
+
+/* .column{
+    display: flex;
+    flex:1
+
+
+} */

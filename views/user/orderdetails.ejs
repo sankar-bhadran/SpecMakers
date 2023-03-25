@@ -1,0 +1,63 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css'>
+
+<%-include("../layouts/userloggedin.ejs") %> 
+<section class="mt-12 text-gray-800 tracking-widest w-full max-w-6xl mx-auto flex min-h-screen">
+	<nav class="w-56 flex-none text-gray-800 tracking-widest border-r">
+		<div class="h-full flex flex-col gap-2 p-2">
+			<div class="py-2 flex flex-col gap-1">
+				<a class="flex items-center text-xs rounded tracking-widest px-4 py-2 cursor-pointer hover:bg-yellow-100 transition duration-200 ease-in-out" href="/dashboard">
+					<i class="fas fa-bi bi-person-circle text-sm w-8"></i>
+					<p class="font-bold"style="font-size: larger;">Profile</p>
+				</a>
+				<a class="flex items-center text-xs rounded tracking-widest bg-yellow-200 px-4 py-2 cursor-pointer hover:bg-yellow-100 active ease-in-out active" href="/orderdetails">
+					<i class="far fa-bi bi-calendar-check text-sm w-8"></i>
+					<p class="font-bold"style="font-size: larger;">Orders</p>
+				</a>
+				<a href="/address" class="flex items-center text-xs rounded tracking-widest px-4 py-2 cursor-pointer hover:bg-yellow-100 transition duration-200 ease-in-out">
+					<i class="far fa-images text-sm w-8"></i>
+					<p class="font-bold"style="font-size: larger;">Addresses</p>
+				</a>
+			</div>
+		</div>
+	</nav>
+    <section class="container">
+	 <div class="table-responsive">
+        <table class="table">
+            <thead class="bg-yellow-200">
+                <tr>
+                    <th>Order Id</th>
+                    <th>Date Purchased</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <td>123566</td>
+                <td>01/02/2023</td>
+                <td>cod</td>
+                <td>status</td>
+                <td>
+                    <a href="" class="btn btn-danger">Cancel</a>
+                </td>
+                <td>
+                    <a href="" class="btn btn-primary">View details</a>
+                 </td>
+            </tbody>
+        </table>
+     </div>
+</section>
+ 
+		
+                 
+               
+
+				
+	
+	
+</section>
+<!-- partial -->
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine.js'></script>
+
+  <%- include("../layouts/userFooter") %>
