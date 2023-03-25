@@ -46,8 +46,7 @@ const loadOTP=async(req,res)=>{
             password:spassword,
             is_admin:0,
         });
-        // newotp=message.sendMessage(req.body.mno,res);
-        newotp=5512
+        newotp=message.sendMessage(req.body.mno,res);
         console.log(newotp);
         res.render("otpverify",{otp:newotp})
     }
@@ -183,8 +182,8 @@ const forgotverifyno=async(req,res)=>{
         const No=req.body.number
         const verify =await User.findOne({mobile:No})
         if(verify){
-            //  newotp=message.sendMessage(No,res)
-            newotp=5512;
+             newotp=message.sendMessage(No,res)
+           
              console.log(newotp);
             res.render('forgotpasswordotp',{otp:newotp,mobile:No})
         }else{
