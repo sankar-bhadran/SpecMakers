@@ -300,8 +300,10 @@ const adminorders=async(req,res)=>{
       await key.populate('products.item.productId');
       await key.populate('userId')
     }
+    console.log(orderData);
     if(Ordertype == undefined){
       res.render('adminorders',{admin:admindata,product:productData,order:orderData})
+
     }else{
       id=req.query.id
       res.render('adminorders',{admin:admindata,product:productData,order:orderData,id:id})

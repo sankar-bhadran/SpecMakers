@@ -537,7 +537,7 @@ const placeorders=async(req,res)=>{
             const userData=await User.findById({_id:userSession.user_id})
             const completeUser=await userData.populate('cart.item.productId')
             const data=await Address.findById({_id:req.body.addressid})
-            const totalPrice=completeUser.cart.totalPrice||userSession.couponTotal
+            const totalPrice=completeUser.cart.totalPrice
             if(completeUser.cart.totalPrice>0){
                 order=Orders({
                     userId:userSession.user_id,
@@ -555,8 +555,8 @@ const placeorders=async(req,res)=>{
                   }
                   else{
                     var instance = new RazorPay({
-                        key_id:process.env.KEY_ID,
-                        key_secret:process.env.KEY_SECRET
+                        key_id:process.env.key_id,
+                        key_secret:process.env.key_secret
                        
                       })
                       let razorpayOrder = await instance.orders.create({

@@ -44,23 +44,23 @@
                     </a>
                 </li>
                 <li >
-                    <a href="/admin/loadBanners">
+                    <a href="loadbanner">
                         <i class="ti-map"></i>
                         <p>Banners</p>
                     </a>
                 </li>
                 <li>
-                    <a href="admin-offer">
+                    <a href="coupon">
                         <i class="ti-bell"></i>
                         <p>Offer</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/salesReport">
-                        <i class="ti-download"></i>
-                        <p>Product List</p>
+                    <a href="/admin/salesreport">
+                        <i class="fas fa-book"></i>
+                        <p>Sales Report</p>
                     </a>
-                  </li>
+                </li>
                 <li>
                     <a href="/admin/logout"
                       ><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a
@@ -170,7 +170,7 @@
                                                 <%=order[i-1]._id %>
                                             </td> 
                                             <td>
-                                              <%=order[i-1].userId.name %>
+                                              <%=order[i-1].userId.name%>
                                             </td>
                                             <td>
                                                <%=order[i-1].OrderedAt.toDateString() %>

@@ -25,39 +25,39 @@
                 <li>
                     <a href="adminProduct">
                         <i class="ti-view-list-alt"></i>
-                        <p>admin Product</p>
+                        <p>Product</p>
                     </a>
                 </li>
                 <li>
                     <a href="adminOrder">
                         <i class="ti-pencil-alt2"></i>
-                        <p>admin Order</p>
+                        <p>Order</p>
                     </a>
                 </li>
                 <li>
                     <a href="admin-category">
                         <i class="ti-map"></i>
-                        <p>admin category</p>
+                        <p>Category</p>
                     </a>
                 </li>
                 <li class="a" >
-                    <a href="/admin/loadBanners">
+                    <a href="loadbanner">
                         <i class="ti-map"></i>
                         <p>Banners</p>
                     </a>
                 </li>
                 <li class="active"> 
-                    <a href="admin-offer">
+                    <a href="coupon">
                         <i class="ti-bell"></i>
                         <p>Offer</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/salesReport">
-                        <i class="ti-download"></i>
-                        <p>Product List</p>
+                    <a href="/admin/salesreport">
+                        <i class="fas fa-book"></i>
+                        <p>Sales Report</p>
                     </a>
-                  </li>
+                </li>
                 <li>
                     <a href="/admin/adminlogout"
                       ><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a
@@ -184,7 +184,7 @@
                                                                  </td>
                                                                     
                                                                 <td>
-                                                                   <%=coupon[i].expiry_Data%>
+                                                                   <%=coupon[i].expiry_Data.toDateString() + " at " +coupon[i].expiry_Data.getHours() + ":" + coupon[i].expiry_Data.getMinutes() + ":" + coupon[i].expiry_Data.getSeconds();%>
                                                                    
                                                                 </td>
                                                                 <td>
