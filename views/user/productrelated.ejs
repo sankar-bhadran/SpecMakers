@@ -1,50 +1,77 @@
-<%-include('../layouts/productdetailsheader.ejs') %>
-<%- include('../layouts/userloggedin.ejs') %>
+<%-include('../layouts/productdetailsheader.ejs') %> <%-
+include('../layouts/userloggedin.ejs') %>
 
 <body>
-    
-    <section class=" container sproduct my-5 pt-5">
-        <div class="row">
-            <div class="col-lg-5 col-md-12 col-12 pb-1 rounded" style=" border: 1px solid black; ">
-                <img class="img-fluid w-100" src="/admin/assets/uploads/<%=productone.image[0] %>" alt="" id="MainImg" width="auto" height="auto">
-                <hr style="border:solid 1px black;
-                width: 96%;
-                color: #FFFF00;
-                height: 1px;
-                ">
-                <div class="small-img-group">
-                    <div class="small-img-col  me-1 ">
-                        <img src="/admin/assets/uploads/<%=productone.image[0] %>" width="120px"class="small-img" alt="" height="120px">
-                    </div> 
-                    <div class="small-img-col">
-                        <img src="/admin/assets/uploads/<%=productone.image[1] %>" width="120px"class="small-img" alt="" height="120px">
-                    </div>
-                    <div class="small-img-col ms-1">
-                        <img src="/admin/assets/uploads/<%=productone.image[2] %>" width="120px"class="small-img" alt="" height="120px">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-12 col-12 ">
-                <h6>Home/View Details</h6>
-                <h3 class="py-4"><%=productone.name %></h3>
-                <h2>₹.<%=productone.price %></h2>
-                <!-- <select class="my-3 rounded">
+  <section class="container sproduct my-5 pt-5">
+    <div class="row">
+      <div
+        class="col-lg-5 col-md-12 col-12 pb-1 rounded"
+        style="border: 1px solid black"
+      >
+        <img
+          class="img-fluid w-100"
+          src="/admin/assets/uploads/<%=productone.image[0] %>"
+          alt=""
+          id="MainImg"
+          width="auto"
+          height="auto"
+        />
+        <hr
+          style="
+            border: solid 1px black;
+            width: 96%;
+            color: #ffff00;
+            height: 1px;
+          "
+        />
+        <div class="small-img-group">
+          <div class="small-img-col me-1">
+            <img
+              src="/admin/assets/uploads/<%=productone.image[0] %>"
+              width="120px"
+              class="small-img"
+              alt=""
+              height="120px"
+            />
+          </div>
+          <div class="small-img-col">
+            <img
+              src="/admin/assets/uploads/<%=productone.image[1] %>"
+              width="120px"
+              class="small-img"
+              alt=""
+              height="120px"
+            />
+          </div>
+          <div class="small-img-col ms-1">
+            <img
+              src="/admin/assets/uploads/<%=productone.image[2] %>"
+              width="120px"
+              class="small-img"
+              alt=""
+              height="120px"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-12 col-12">
+        <h6>Home/View Details</h6>
+        <h3 class="py-4"><%=productone.name %></h3>
+        <h2>₹.<%=productone.price %></h2>
+        <!-- <select class="my-3 rounded">
                     <option>Select Frame</option>
                     <option>Round</option>
                     <option>Square</option>
                     <option>Wayfarer</option>
                     <option>Rectangle</option>
                 </select> -->
-                <button class="buy-btn rounded text text-white">Add To Cart</button>
-                 <h4 class="mt-5 mb-5">Product Details</h4>
-                 <span><%= productone.description %></span>
-
-
-            </div>
-        </div>
-      </section>     
-</body>   
-
+        <button class="buy-btn rounded text text-white">Add To Cart</button>
+        <h4 class="mt-5 mb-5">Product Details</h4>
+        <span><%= productone.description %></span>
+      </div>
+    </div>
+  </section>
+</body>
 
 <%-include('../layouts/userFooter.ejs') %>
 <%-include("../layouts/productsdetailfooter.ejs") %>
